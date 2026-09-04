@@ -76,8 +76,8 @@ flowchart TB
     KedaMetrics -->|"5. 提供 Lag 指標給 HPA"| HPA
     HPA -->|"6. 觸發擴容 Scale Up (0 -> N)"| Deployment
     Deployment --> Active_Pods
-    Active_Pods ==|"7. 平行拉取並消費 (Consume)"|==> TopicIn
-    Active_Pods ==|"8. 處理完成後寫入 (Produce)"|==> TopicOut
+    Active_Pods -->|"7. 平行拉取並消費 (Consume)"| TopicIn
+    Active_Pods -->|"8. 處理完成後寫入 (Produce)"| TopicOut
 
     %% --- 治理與可觀測性連線 (縮容與指標採集) ---
     TopicIn -.->|"A. 訊息處理完畢 (Lag = 0)"| KedaOperator
